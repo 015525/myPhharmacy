@@ -1,0 +1,39 @@
+﻿@model myPharmacy.Models.drug
+
+<br />
+<h2 class="text-info">@(Model.drug_id!=0? "Edit" : "Create") Drug</h2>
+<br />
+
+<div clsss="border container" style="padding:30px;">
+    <form method="post" asp-action="Upsert">
+        @if (Model.drug_id != 0)
+        {
+            <input type="hidden" asp-for="drug_id" />
+        }
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="drug_name">Drug Name</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="drug_name" class="form-control" />
+                <span asp-validation-for="drug_name" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.drug_id!=0? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-sucess form-control">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+} 

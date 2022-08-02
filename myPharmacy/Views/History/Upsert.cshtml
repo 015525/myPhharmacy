@@ -1,0 +1,143 @@
+﻿@model myPharmacy.Models.historyy
+
+<br />
+<h2 class="text-info">@(Model.his_id!=0? "Edit" : "Create") History</h2>
+<br />
+
+<div clsss="border container" style="padding:30px;">
+    <form method="post" asp-action="Upsert">
+        @if (Model.his_id != 0)
+        {
+            <input type="hidden" asp-for="his_id" />
+        }
+
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="drug_id" class="col-md-2 control-label">Drug Name</label>
+            </div>
+            <div class="col-6">
+                <!--<input type="hidden" id="txt" asp-for="drug_name"/>-->
+                @Html.DropDownListFor(model => model.drug_id, (SelectList)ViewBag.drugNameList as SelectList, "-- Select Drug --", new { @class = "form-control" })
+                <span asp-validation-for="drug_id" class="text-danger"></span>
+
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="comming_date">Comming Date</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="comming_date" class="form-control" />
+                <span asp-validation-for="comming_date" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="expirey_date">Expirey Date</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="expirey_date" class="form-control" />
+                <span asp-validation-for="expirey_date" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="quantity">Quantity</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="quantity" class="form-control" />
+                <span asp-validation-for="quantity" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="unit"> Unit</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="unit" class="form-control" />
+                <span asp-validation-for="unit" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.his_id!=0? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-6">
+                <a asp-action="Index" class="btn btn-sucess form-control">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+<!--
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#drug_id").change(function () {
+            var ddtext = $("#drug_id option:selected").text();
+            $("#txt").val(ddtext);
+
+        })
+
+
+
+    })
+
+
+
+</script>
+<script>
+    function selected_text(ddl_item) {
+        var selval = ddl_item.value;
+        var seltext = ddl_item.options[ddl_item.selectedIndex].innerHTML;
+        $('#txt').(seltext);
+    }
+</script>
+
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="drug_id">Drug ID</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="drug_id" class="form-control" />
+                <span asp-validation-for="drug_id" class="text-danger"></span>
+            </div>
+        </div>
+
+    <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="expired">Expired</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="expired" class="form-control" />
+                <span asp-validation-for="expired" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="finished">Finished</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="finished" class="form-control" />
+                <span asp-validation-for="finished" class="text-danger"></span>
+            </div>
+        </div>
+            <div class="form-gruop row">
+            <div class="col-3">
+                <label asp-for="production_date">Production Date</label>
+            </div>
+            <div class="col-6">
+                <input asp-for="production_date" class="form-control" />
+                <span asp-validation-for="production_date" class="text-danger"></span>
+            </div>
+        </div>
+    -->
